@@ -7,7 +7,8 @@ def up_down_game():
     
     while True : #본게임 반복문
         try:
-            ip=int(input('답을 입력 하세요 :'))
+            ip=int(input('''==============================
+답을 입력 하세요 :'''))
             if not (0<ip<101):
                 print('1~100사이에 수를 입력해주세요.')
                 continue
