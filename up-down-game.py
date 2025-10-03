@@ -6,20 +6,24 @@ def up_down_game():
     print('1~100사이에 수를 입력해주세요.')
     
     while True : #본게임 반복문
-        ip=int(input('답을 입력 하세요 :'))
-        count+=1 #순서 카운트
-        
-        if not (0<ip<101):
-            print('1~100사이에 수를 입력해주세요.')
+        try:
+            ip=int(input('답을 입력 하세요 :'))
+            if not (0<ip<101):
+                print('1~100사이에 수를 입력해주세요.')
+                continue
+            else:
+                count+=1 #순서 카운트
+                if ip>dap:
+                    print('다운')
+                elif ip<dap:
+                    print('업')
+                elif ip == dap:
+                    print('%d만에 정답!!!' %count)
+                    break
+        except ValueError:
+            print('숫자를 입력해 주세요.')
             continue
-        else:
-            if ip>dap:
-                print('다운')
-            elif ip<dap:
-                print('업')
-            elif ip == dap:
-                print('%d만에 정답!!!' %count)
-                break
+
 
 if __name__ == "__main__":
     up_down_game()
