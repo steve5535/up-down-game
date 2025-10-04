@@ -19,7 +19,7 @@ def up_down_game():
                 elif ip<dap:
                     print('업')
                 elif ip == dap:
-                    print('%d만에 정답!!!' %count)
+                    print('%d번만에 정답!!!' %count)
                     break
         except ValueError:
             print('숫자를 입력해 주세요.')
