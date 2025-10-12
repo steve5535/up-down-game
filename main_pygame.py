@@ -31,6 +31,7 @@ while True: # 화면에 표시하는 메인 루프
                 except:
                     message = "숫자를 입력해 주세요."
                     
+                print("입력 완료 :",user_input)
                 user_input = "" # 유저 입력 초기화
             elif event.key == pygame.K_BACKSPACE:
                 user_input = user_input[:-1]
