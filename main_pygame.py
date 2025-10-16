@@ -33,7 +33,7 @@ def handle_input(event, user_input, answer, count, message): # 입력 처리 함
         user_input = "" # 입력값 초기화
     elif event.key == pygame.K_BACKSPACE: # 백스페이스 키를 누르면 user_input의 마지막 글자 지움
         user_input = user_input[:-1] # 문자열의 마지막 문자 제외
-    elif event.unicode.isdigit(): # 숫자만 입력받기
+    elif event.unicode.isdigit() and len(user_input) < 3: # 숫자만 입력받기
         user_input += event.unicode # user_input에 추가
 
     return user_input, count, message # 입력 처리 후 최신 상태를 반환
