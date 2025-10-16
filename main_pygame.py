@@ -42,27 +42,24 @@ def handle_input(event, user_input, answer, count, message): # 입력 처리 함
         user_input = user_input[:-1] # 문자열의 마지막 문자 제외
     elif event.unicode.isdigit() and len(user_input) < 3: # 3자리 숫자만 입력받기
         user_input += event.unicode # user_input에 추가
-
+    
     return user_input, count, message # 입력 처리 후 최신 상태를 반환
+
+def draw_screen(user_input, message, count): # 화면 그리기 함수
+    screen.fill((0, 0, 0)) # 화면 초기화
+    screen.blit(font.render(user_input, True, COLOR_TEXT), (200, 150)) # 입력값
+    screen.blit(font.render(message, True, COLOR_MESSAGE), (200, 250)) # 메시지값
+    screen.blit(font.render(f"시도 횟수 : {count}", True, COLOR_COUNT), (100, 50)) # 시도 횟수값
+    pygame.display.update()
 
 
 answer, count, user_input, message = init_game()
-
-while True: # 화면에 표시하는 메인 루프
-    screen.fill((0, 0, 0))
+while True: # 메인 루프
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
         elif event.type == pygame.KEYDOWN:
             user_input, count, message = handle_input(event, user_input, answer, count, message)
-
-    text = font.render(user_input, True, COLOR_TEXT) # 화면에 입력값 출력
-    screen.blit(text, (200, 150))
-
-    message_text = font.render(message, True, COLOR_MESSAGE) # 업다운 판별값 출력
-    screen.blit(message_text, (200, 250))
-    count_text = font.render(f"시도 횟수 : {count}", True, COLOR_COUNT) # 시도 횟수 화면에 출력
-    screen.blit(count_text, (100, 50))
-
-    pygame.display.update()
+    
+    draw_screen(user_input, message, count)
