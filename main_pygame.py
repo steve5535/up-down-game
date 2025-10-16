@@ -6,12 +6,16 @@ pygame.init() # 초기화
 screen = pygame.display.set_mode((600,400)) # 화면 크기 설정
 pygame.display.set_caption("Up-Down Game (Pygame)") # 창 이름 설정
 
-answer = random.randrange(1, 101) # 난수로 답을 변수에 저장
-count = 0 # 시도 횟수 변수
-
-user_input = "" # 유저 입력을 받는 변수
-message = "" # 메시지 초기화
 font = pygame.font.SysFont("malgungothic", 74) # 글자 크기 설정
+
+def init_game():
+    answer = random.randrange(1, 101) # 정답 난수
+    count = 0 # 시도 횟수 초기화
+    user_input = "" # 입력 초기화
+    message = "" # 메시지 초기화
+    return answer, count, user_input, message
+
+answer, count, user_input, message = init_game()
 
 while True: # 화면에 표시하는 메인 루프
     screen.fill((0, 0, 0))
